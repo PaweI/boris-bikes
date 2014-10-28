@@ -4,9 +4,8 @@ class Bike
   end
 
   def broken?
-    fix!
+    @broken
   end
-  
 
   def break!
     @broken = true
