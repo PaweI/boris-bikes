@@ -1,18 +1,11 @@
 require 'docking_station'
 
 describe Docking_station do
-  it 'shows that there bikes avaliable' do 
-    ask = Docking_station.new
-    expect(ask.bikes).to eq "Bikes avaliable to collect!"
+  it 'should accept a bike' do 
+    bike = Bike.new
+    station = Docking_station.new
+    expect(station.bike_count).to eq 0
+    station.dock(bike)
+    expect(station.bike_count).to eq 1
   end
-
-  it 'can be broken' do
-    ask = Docking_station.new
-    expect(ask.brake!).to eq false
-  end
-
-  it 'can be fixed' do
-  end
-
-
 end

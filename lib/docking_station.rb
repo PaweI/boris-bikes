@@ -1,10 +1,17 @@
+require 'bike'
+
 class Docking_station
 
-  def bikes
-    "Bikes avaliable to collect!"
+  def initialize
+    @bikes = 0
   end
 
-  def brake!
-    
+  def bike_count
+    @bikes 
   end
+
+  def dock(bike)
+    @bikes = 1
+  end
+
 end
