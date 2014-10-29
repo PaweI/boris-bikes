@@ -1,5 +1,3 @@
-require 'bike'
-
 class Docking_station
 
   DEFAULT_CAPACITY = 10
@@ -14,6 +12,7 @@ class Docking_station
   end
 
   def dock(bike)
+    raise 'Station is full' if full?
     @bikes << bike
   end
 
@@ -23,5 +22,9 @@ class Docking_station
 
   def full?
     bike_count == @capacity
+  end
+
+  def available_bikes
+    @bikes.reject { |bike| bike.broken? } 
   end
 end
