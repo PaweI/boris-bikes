@@ -1,35 +1,23 @@
-class Docking_station
+class DockingStation
 
-  DEFAULT_CAPACITY = 10
+  attr_accessor :bikes, :capacity
+
+  DEFAULT_CAPACITY = 20
 
   def initialize(options = {})
-    @capacity = options.fetch(:capacity, DEFAULT_CAPACITY)
     @bikes = []
+    @capacity = options.fetch(:capacity, DEFAULT_CAPACITY)
   end
 
-  def bike_count
-    @bikes.count
+  def full?
   end
 
   def dock(bike)
-    raise 'Station is full' if full?
     @bikes << bike
   end
 
   def release(bike)
-    raise 'No bikes available, sorry' if empty?
-    @bikes.delete(bike)
+    @bikes.delete(bike) if !bike.broken?
   end
 
-  def full?
-    bike_count == @capacity
-  end
-
-  def empty? 
-    bike_count == 0
-  end
-
-  def available_bikes
-    @bikes.reject { |bike| bike.broken? } 
-  end
 end
