@@ -10,6 +10,7 @@ class DockingStation
   end
 
   def full?
+    @capacity == @bikes.size
   end
 
   def dock(bike)
@@ -18,6 +19,13 @@ class DockingStation
 
   def release(bike)
     @bikes.delete(bike) if !bike.broken?
+  end
+
+  def transfer_to(van)
+    @bikes.each do |bike| 
+      @bikes.delete(bike) if bike.broken?
+      van.dock(bike) if bike.broken?
+    end
   end
 
 end
