@@ -33,14 +33,14 @@ end
 			station.dock(bike)
 			station.dock(bike_broken)
 			expect(station.bikes.count).to eq(2)
-			station.release
+			station.release(bike)
 			expect{station.dock(bike)}.to change{station.bikes.count}.by 1
 		end
 
 		it 'will NOT release broken bikes' do
 			station.dock(bike_broken)
 			expect(station.bikes.count).to eq(1)
-			station.release
+			station.release(bike)
 			expect(station.bikes.count).to eq(1)
 		end
 		
@@ -57,10 +57,5 @@ end
 			station.dock(bike_broken)
 			expect(station.available_bikes).to eq([bike])
 		end
-
 	end
-
-
-
-
 end
