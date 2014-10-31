@@ -1,10 +1,11 @@
 class Garage 
-	
+
 	include BikeContainer
 
 
-	def repair(bike)
+	def accept(bike)
 		bike.fix!
+		dock(bike)
 	end
 
 

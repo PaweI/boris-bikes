@@ -1,10 +1,10 @@
 require 'garage'
 
 describe Garage do 
-	let(:garage)		{Garage.new}
-	let(:bike)			{double :bike, broken?: false}
+	let(:garage)		  {Garage.new}
+	let(:bike)			  {double :bike, broken?: false}
 	let(:bike_broken)	{double :bike, broken?: true}
-	let(:van)			{double :van}
+	let(:van)		    	{double :van}
 
 	it 'will receive broken bikes' do
 		expect(garage.bikes.count).to eq(0)
@@ -13,9 +13,8 @@ describe Garage do
 	end
 
 	it 'will fix broken bikes' do
-		garage.dock(bike_broken)
 		expect(bike_broken).to receive(:fix!)
-		garage.repair(bike_broken)
+		garage.accept(bike_broken)
 		
 	end 
 

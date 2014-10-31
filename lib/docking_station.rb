@@ -4,9 +4,11 @@ class DockingStation
 
   include BikeContainer
 
-def initialize(options = {})
+  def initialize(options = {})
 	self.capacity = options.fetch(:capacity, capacity)
-end
+  end
 
-
+  def available_bikes
+    bikes.reject { |bike| bike.broken? }
+  end
 end

@@ -22,8 +22,8 @@ def dock(bike)
   bikes << bike
 end
 
-def release(bike)
-  bikes.delete(bike) if !bike.broken?
+def release
+  bikes.each { |bike| bikes.delete(bike) if !bike.broken? }
 end
 
 def full?
@@ -33,7 +33,7 @@ end
 
 def transfer_to(place)
   bikes.each do |bike|
-    release(bike)
+    release
     place.dock(bike) if bike.broken?
   end
 end

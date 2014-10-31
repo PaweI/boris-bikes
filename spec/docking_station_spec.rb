@@ -1,10 +1,10 @@
 require 'docking_station'
 
 describe DockingStation do
-	let(:station){DockingStation.new}
-	let(:bike){double :bike, broken?: false}
-	let(:bike_broken){double :bike, broken?: true}
-	let(:van){double :van}
+	let(:station)       {DockingStation.new}
+	let(:bike)          {double :bike, broken?: false}
+	let(:bike_broken)   {double :bike, broken?: true}
+	let(:van)           {double :van}
 
 
 def fill_station(bike)
@@ -33,14 +33,14 @@ end
 			station.dock(bike)
 			station.dock(bike_broken)
 			expect(station.bikes.count).to eq(2)
-			station.release(bike)
+			station.release
 			expect{station.dock(bike)}.to change{station.bikes.count}.by 1
 		end
 
 		it 'will NOT release broken bikes' do
 			station.dock(bike_broken)
 			expect(station.bikes.count).to eq(1)
-			station.release(bike_broken)
+			station.release
 			expect(station.bikes.count).to eq(1)
 		end
 		
@@ -50,8 +50,13 @@ end
 			station.dock(bike)
 			expect(van).to receive(:dock).with(bike_broken)
 			station.transfer_to(van)
-		end 
+		end
 
+		it 'shows available bikes' do
+			station.dock(bike)
+			station.dock(bike_broken)
+			expect(station.available_bikes).to eq([bike])
+		end
 
 	end
 
