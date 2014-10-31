@@ -8,11 +8,11 @@ describe DockingStation do
 
 
 def fill_station(bike)
-	20.times { station.dock(bike) }	
+	10.times { station.dock(bike) }	
 end
 
 	it 'has a default capacity' do
-		expect(station.capacity).to eq(20)
+		expect(station.capacity).to eq(10)
 		fill_station(bike)
 		expect(station).to be_full
 		station.dock(bike)
