@@ -22,8 +22,4 @@ attr_accessor :bikes
 			van.dock(bike) if !bike.broken?
 		end
 	end
-
-
-
-
 end
