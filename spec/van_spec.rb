@@ -2,9 +2,9 @@ require 'van'
 
 describe Van do
 
-  let(:van) {Van.new}
-  let(:broken_bike) {double :broken_bike}
-  let(:bike) {double :bike}
+  let(:van)            { Van.new             }
+  let(:broken_bike)    { double :broken_bike }
+  let(:bike)           { double :bike        }
 
   it 'has no bikes when starting' do
     expect(van).not_to be_full

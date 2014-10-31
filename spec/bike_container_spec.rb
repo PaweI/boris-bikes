@@ -3,8 +3,8 @@ require 'bike_container'
 class ContainerHolder; include BikeContainer; end
 
 describe BikeContainer do    
-  let(:bike) {double :bike}
-  let(:holder) {ContainerHolder.new}
+  let(:bike)      { double :bike        }
+  let(:holder)    { ContainerHolder.new }
 
   it 'should accept a bike' do
 
@@ -12,5 +12,4 @@ describe BikeContainer do
     holder.dock(bike)
     expect(holder.bike_count).to eq(1)
   end
-  
 end

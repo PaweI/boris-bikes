@@ -5,6 +5,5 @@ class Van
   def collect(bike)
     @bikes << bike if bike.broken?
   end
-
 end
 

@@ -31,10 +31,15 @@ def full?
 end
 
 
-def transfer_to(place)
-  bikes.each do |bike|
-    release
-    place.dock(bike) if bike.broken?
-  end
+def transfer_broken_to(place)
+  bikes.each { |bike| place.dock(bike) if bike.broken? }
+end
+
+def transfer_fixed_to(place)
+  bikes.each { |bike| place.dock(bike) if !bike.broken? }
+end
+
+def available_bikes
+  bikes.reject { |bike| bike.broken? }
 end
 end

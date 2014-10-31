@@ -1,9 +1,9 @@
 require 'person'
 
 describe Person do 
-  let(:bike)                {double :bike}
-  let(:person_without_bike) {Person.new}
-  let(:person_with_bike)    {Person.new(bike)}
+  let(:bike)                   { double :bike     }
+  let(:person_without_bike)    { Person.new       }
+  let(:person_with_bike)       { Person.new(bike) }
 
   it 'has no bike when born' do 
     expect(person_without_bike).not_to have_bike
