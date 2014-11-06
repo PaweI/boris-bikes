@@ -21,27 +21,22 @@ end
 
 	it 'holds bikes' do
 		expect(station.bikes.count).to eq(0)
-		station.dock(bike)
 		expect{station.dock(bike)}.to change{station.bikes.count}.by 1
 	end
 
 
 	context 'release bikes' do
 
-
 		it 'will release bike if not broken' do
 			station.dock(bike)
-			station.dock(bike_broken)
-			expect(station.bikes.count).to eq(2)
+			expect { station.dock(bike_broken) }.to change {station.bikes.count}.by 1
 			station.release(bike)
 			expect{station.dock(bike)}.to change{station.bikes.count}.by 1
 		end
 
 		it 'will NOT release broken bikes' do
-			station.dock(bike_broken)
-			expect(station.bikes.count).to eq(1)
-			station.release(bike)
-			expect(station.bikes.count).to eq(1)
+			expect{station.dock(bike_broken)}.to change{station.bikes.count}.by 1
+			expect{station.release(bike)}.to change {station.bikes.count}.by 0
 		end
 		
 

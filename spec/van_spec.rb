@@ -19,8 +19,7 @@ describe Van do
 
   it 'collect broken from station' do
     station.dock(bike)
-    station.transfer_broken_to(van)
-    expect(van.bikes.count).to eq 0
+    expect{station.transfer_broken_to(van)}.to change {van.bikes.count}.by 0
     station.dock(broken_bike)
     station.transfer_broken_to(van)
     expect(station.bikes.count).to eq 1
@@ -28,14 +27,12 @@ describe Van do
 
   it 'put fixed bike back to docking station' do
     van.dock(bike)
-    van.transfer_fixed_to(station)
-    expect(station.bikes.count).to eq 1
+    expect {van.transfer_fixed_to(station)}.to change { station.bikes.count }.by 1
   end
 
   it 'docking broken bike to garage' do
     van.dock(broken_bike)
     expect(garage).to receive(:dock)
-    van.transfer_broken_to(garage)
-    expect(van.bikes.count).to eq 0
+    expect{van.transfer_broken_to(garage)}.to change {van.bikes.count}.by -1
   end
 end

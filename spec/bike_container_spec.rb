@@ -9,7 +9,6 @@ describe BikeContainer do
   it 'should accept a bike' do
 
     expect(holder.bike_count).to eq(0)
-    holder.dock(bike)
-    expect(holder.bike_count).to eq(1)
+    expect { holder.dock(bike) }.to change { holder.bike_count }.by 1
   end
 end

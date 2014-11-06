@@ -7,7 +7,6 @@ describe Person do
 
   it 'has no bike when born' do 
     expect(person_without_bike).not_to have_bike
-    # expect(person_without_bike.has_bike?).to be false
   end
 
   it 'can have a bike' do               
@@ -21,7 +20,6 @@ describe Person do
 
   it 'can loose a bike' do 
     person_with_bike.lose_bike!
-
     expect(person_with_bike).not_to have_bike
 
   end
@@ -29,7 +27,6 @@ describe Person do
   it 'can rant a bike from docking station' do
     old_street = double :station
     expect(old_street).to receive(:release)
-
     person_without_bike.rent_bike_from(old_street)
   end
 
