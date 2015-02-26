@@ -1,11 +1,12 @@
 class Person
+  attr_reader :bike
 
-  def initialize(bike = nil)
+  def initialize(bike = 0)
     @bike = bike
   end
 
   def has_bike?
-    !@bike.nil?
+    @bike
   end
 
   def fall_down!
@@ -13,7 +14,7 @@ class Person
   end
 
   def lose_bike!
-    @bike = nil
+    @bike = false
   end
 
   def rent_bike_from(station)
@@ -21,7 +22,7 @@ class Person
   end
 
   def return_bike(station)
-    @bike = nil
+    lose_bike!
     station.dock
   end
 end

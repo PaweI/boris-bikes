@@ -1,18 +1,15 @@
- class Bike
+class Bike
+  attr_reader :broken
 
-def initialize
-	fix!
-end
+  def initialize
+    fix!
+  end
 
-def broken?
-	@broken
-end
+  def break!
+    @broken = true
+  end
 
-def break!
-	@broken = true
-end
-
-def fix!
-	@broken = false
-end
+  def fix!
+    @broken = false
+  end
 end

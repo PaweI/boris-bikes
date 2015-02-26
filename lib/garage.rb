@@ -1,9 +1,8 @@
-class Garage 
+class Garage
+  include BikeContainer
 
-	include BikeContainer
-
-	def accept(bike)
-		bike.fix!
-		dock(bike)
-	end
+  def accept(bike)
+    bike.fix!
+    dock(bike)
+  end
 end
